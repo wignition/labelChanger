@@ -39,13 +39,18 @@ def bulkPatchLabels(account, searchTerm, label_results):
     new = input("Input the new phrase that will replace the term you searched.\n")
     
 #replace the searchstring with the newstring
+    print("\nEnter Replace For Loop\n")
     for item in label_results:
-        item[0].replace(searchTerm,new)
+        item[0] = item[0].replace(searchTerm,new)
+        print(item)
+
+    print("\nExit Replace For Loop\n")
 
 #patch the lables
     try:
+        print("\nEnter Patch For Loop\n")
         for item in label_results:
-            label_obj = {"name": new, "id": item[1]}
+            label_obj = {"name": item[0], "id": item[1]}
             service = build('gmail', 'v1', credentials=creds)
             results = service.users().labels().patch(userId=account,
                                                      id=item[1],
