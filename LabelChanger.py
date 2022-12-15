@@ -26,14 +26,18 @@ print(label_results)
 #TODO - give user option to search again if the list of results
 # is long (10-50), or "really long" (50+)
 
+#select to update single selected label, or all (FUTURE: select-by-comma-separated-numbers())
+select_version = input("\nselect the version\n1 - update individual label\n2 - update all labels")
+print("run the", select_version)
+
 #numerate the results
 label_results = numerator(label_results)
 
 #select the filtered result
 selected_result, name, ID = resultSelector(label_results)
-
+ 
 #update the selected label
 patchLabels(account, ID)
 
 #update all the labels in label_results
-#bulkPatchLabels(account, searchTerm, label_results)
+bulkPatchLabels(account, searchTerm, label_results)
